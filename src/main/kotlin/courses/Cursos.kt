@@ -1,14 +1,17 @@
-import java.lang.reflect.Constructor
+package courses
 
-class Cursos (var nomeCurso : String? = null, var professor : String? = null, var ano: Int){
+import students.Estudante
+
+class Cursos (private var nomeCurso : String? = null, private var professor : String? = null,
+              private var ano: Int){
 
 
-    val listaEstudantes = mutableListOf<Estudante?>()
+    private val listaEstudantes = mutableListOf<Estudante?>()
 
 
     fun matricularEstudante(estudante: Estudante?){
         listaEstudantes.add(estudante)
-        println("Estudante cadastrado com Sucesso!")
+        println("students.Estudante cadastrado com Sucesso!")
     }
 
     fun matricularEstudante(estudantes : Array<Estudante?>?){
@@ -44,5 +47,21 @@ class Cursos (var nomeCurso : String? = null, var professor : String? = null, va
         }
         println("A maior nota desse curso é $melhorMedia")
     }
+
+   fun verificarAluno(student: Array<Estudante?>?){
+        println("Digite o nome do Aluno para pesquisar: ")
+        var nomesAlunos = readLine()!!
+        //if (student == nomesAlunos) {
+            for (i in student!!){
+                if (listaEstudantes.contains(i)){
+                    println("O aluno está na lista!")
+                }else{
+                    throw Exception("O aluno não existe na lista!")
+                }
+            }
+        }
+    //}
+    
+
 
 }

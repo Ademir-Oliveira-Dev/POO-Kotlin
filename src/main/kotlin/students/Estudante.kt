@@ -1,9 +1,12 @@
-class Estudante (var primeiroNome: String?, var ultimoNome: String?, var codigoAluno: Int){
+package students
+
+class Estudante (private var primeiroNome: String?, private var ultimoNome: String?,
+                 private var codigoAluno: Int){
 
 
-        var mediaAluno = 0.0
-        var ano = 0
-        val foiAprovado : Boolean
+        internal var mediaAluno = 0.0
+        protected var ano = 0
+        protected val foiAprovado : Boolean
             get(){
                 return mediaAluno >= 60
             }

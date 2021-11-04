@@ -1,3 +1,6 @@
+import courses.Cursos
+import students.Estudante
+
 fun main(args: Array<String>) {
 
     val alunoUm = Estudante("Ademir", "Oliveira", 112,
@@ -27,5 +30,11 @@ fun main(args: Array<String>) {
     cursoUm.matricularEstudante(listaEstudantes)
     cursoUm.maiorMedia()
 
+
+    try {
+        cursoUm.verificarAluno(listaEstudantes)
+    }catch (e: Exception){
+        println("Algo deu errado! O programa será finalizado!")
+    }
 
 }
