@@ -1,58 +1,48 @@
 import java.lang.reflect.Constructor
 
-class Cursos (var nomeCurso : String? = null, var ano: Int){
-
-    var professor : String? = null
-    val listaEstudantesMatriculados = mutableListOf<Estudante>()
+class Cursos (var nomeCurso : String? = null, var professor : String? = null, var ano: Int){
 
 
-    fun matricularEstudante(estudante: Estudante){
-        listaEstudantesMatriculados.add(estudante)
+    val listaEstudantes = mutableListOf<Estudante?>()
+
+
+    fun matricularEstudante(estudante: Estudante?){
+        listaEstudantes.add(estudante)
+        println("Estudante cadastrado com Sucesso!")
     }
 
-    @Override
-    fun matricularEstudante(listaDeEstudantes : Array<Estudante>){
-        for (estudante in listaDeEstudantes ){
-            listaEstudantesMatriculados.add(estudante)
+    fun matricularEstudante(estudantes : Array<Estudante?>?){
+        if (estudantes != null) {
+            for (i in estudantes ){
+                listaEstudantes.add(i)
+            }
         }
-
-
+        println("Estudantes cadastrados com sucesso!")
     }
-
-
 
     fun descadastrarAluno(estudante: Estudante){
-        println("Você realmente deseja remover o estudante abaixo? Digite Sim para" +
-                " remover ou Não para desistir da remoção")
-        estudante.mostraInformacoesAluno()
-        var confirmaRemocao = readLine()!!.uppercase()
-
-        if(confirmaRemocao == "SIM"){
-            listaEstudantesMatriculados.remove(estudante)
-            println("Estudante removido com sucesso")
+        if (listaEstudantes.contains(estudante)){
+            listaEstudantes.remove(estudante)
+            println("Estudante removido com sucesso!")
         }else{
-            println("Estudante não removido")
+            println("Esse estudante não existe na lista!")
         }
-
-
-
-
     }
 
     fun contaEstudantesCadastrados() : Int{
-        return listaEstudantesMatriculados.size
+        println("Número de estudantes cadastrados na lista: ${listaEstudantes.size}")
+        return 0
     }
 
-    fun retornaMaiorMediaDoCurso() : Double{
-        var melhorMedia = 0.0
+    fun maiorMedia() {
+        var melhorMedia: Double? = listaEstudantes[0]?.mediaAluno
 
-        for (estudante in listaEstudantesMatriculados){
-            if (estudante.mediaAluno > melhorMedia){
-                melhorMedia = estudante.mediaAluno
+        for (i in listaEstudantes){
+            if (i?.mediaAluno!! > melhorMedia!!){
+                melhorMedia = i.mediaAluno
             }
         }
-        return melhorMedia
+        println("A maior nota desse curso é $melhorMedia")
     }
-
 
 }

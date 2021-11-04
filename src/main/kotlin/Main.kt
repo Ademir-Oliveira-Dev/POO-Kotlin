@@ -1,31 +1,31 @@
 fun main(args: Array<String>) {
 
-    val alunos = Estudante("Ademir",
-            "Oliveira")
+    val alunoUm = Estudante("Ademir", "Oliveira", 112,
+        70.0, 9)
 
-    alunos.codigoAluno= 1
-    alunos.mediaAluno = 70.0
-    alunos.ano = 9
-//val alunoTeste = Estudante("Julio", "Cesar", 1212)
-    val alunoTeste = Estudante("Julio", "Cesar", 1212, 70.0, 7)
-    val daniel = Estudante("Daniel", "Pereira", 1212, 90.0, 7)
-    val alunoTerceiro = Estudante("Daniel", "Pereira", 1212, 50.0, 7)
+    val alunoDois = Estudante("Esther", "Castellano", 113,
+        70.0, 9)
 
+    val alunoTres = Estudante("Camila", "Campos", 114,
+        70.0, 9)
 
-    val cursoTeste = Cursos("Filosofia", 9)
-
-    //alunoTeste.mostraInformacoesAluno()
-
-    //    cursoTeste.matricularEstudante(alunoTeste)
-    //    cursoTeste.matricularEstudante(daniel)
-    //    cursoTeste.matricularEstudante(alunoTeste)
+    val alunoQuatro = Estudante("Sandra", "Regina", 115,
+        70.0, 9)
 
 
-    val listaEstudantesCriados = arrayOf(alunoTerceiro, daniel, alunoTeste)
-    cursoTeste.matricularEstudante(listaEstudantesCriados)
+    alunoUm.nomeCompleto()
+    alunoUm.passouDeAno()
 
-    //cursoTeste.descadastrarAluno(alunoTeste)
+    val cursoUm = Cursos("Filosofia", "Sandra", 5)
+    cursoUm.matricularEstudante(alunoTres)
+    cursoUm.matricularEstudante(alunoQuatro)
 
-    println(cursoTeste.contaEstudantesCadastrados())
+    cursoUm.contaEstudantesCadastrados()
+
+    val listaEstudantes: Array<Estudante?> = arrayOf(alunoUm, alunoDois)
+
+    cursoUm.matricularEstudante(listaEstudantes)
+    cursoUm.maiorMedia()
+
 
 }
